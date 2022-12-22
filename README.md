@@ -40,3 +40,19 @@ export class SubmitData {
   readonly code: string;
 }
 ```
+
+# 返回错误信息
+```ts
+import { HttpException, HttpStatus } from '@nestjs/common';
+import { Request } from 'express'
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) { }
+
+  @ApiOperation({ summary: '信息' })
+  @Post('/submit')
+  updateInfo(@Req() request: Request) {
+    throw new HttpException('禁止修改', HttpStatus.BAD_REQUEST);
+  }
+}
+```
