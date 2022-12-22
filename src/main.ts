@@ -25,7 +25,10 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
 
   // 添加dto错误校验
-  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalPipes(new ValidationPipe({
+    // 如果一个类型验证都没有，则会报错，这里设置false拦截
+    forbidUnknownValues: false
+  }))
 
   const config = new DocumentBuilder()
     .setTitle('管理后台')

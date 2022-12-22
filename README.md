@@ -19,3 +19,24 @@ nest g service [文件名]
   swagger声明方法见 app.controller.ts 文件
 - 添加全局拦截器
 - 新增接口参数校验
+
+# 添加类型校验例子
+```ts
+import { IsNotEmpty, IsNumber } from 'class-validator'
+export class SubmitData {
+  @IsNotEmpty({ message: '缺少年龄' })
+  @IsNumber({}, { message: '必须是数字类型' })
+  readonly code: string;
+}
+```
+
+# 添加swagger类型标注例子
+```ts
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+export class SubmitData {
+  @ApiProperty({ description: '报告编码' })
+  // 可选的
+  @ApiPropertyOptional({ description: '城市' })
+  readonly code: string;
+}
+```
