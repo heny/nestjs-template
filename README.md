@@ -18,3 +18,4 @@ nest g service [文件名]
   地址：/docs
   swagger声明方法见 app.controller.ts 文件
 - 添加全局拦截器
+- 新增接口参数校验

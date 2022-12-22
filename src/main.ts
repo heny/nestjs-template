@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { TransformInterceptor } from './core/interceptor/transform.interceptor';
 import { HttpExceptionFilter } from './core/filter/http-exception.filter';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 declare const module: any;
 
@@ -22,6 +23,9 @@ async function bootstrap() {
 
   // 注册成功拦截器
   app.useGlobalInterceptors(new TransformInterceptor());
+
+  // 添加dto错误校验
+  app.useGlobalPipes(new ValidationPipe())
 
   const config = new DocumentBuilder()
     .setTitle('管理后台')

@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, Req, HttpException, HttpStatus } from '@ne
 import { AppService } from './app.service';
 import { Request } from 'express'
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { SubmitData } from './app.dot';
+import { SubmitData } from './app.dto';
 
 /**
  * ApiTags添加当前分类描述
@@ -31,6 +31,7 @@ export class AppController {
   @Post('/submit')
   updateInfo(@Req() request: Request, @Body() body: SubmitData): string {
     console.log(request.body, 'body', body)
-    throw new HttpException('禁止修改', HttpStatus.BAD_REQUEST);
+    return '123'
+    // throw new HttpException('禁止修改', HttpStatus.BAD_REQUEST);
   }
 }
